@@ -1,0 +1,43 @@
+﻿.categories {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.category-link {
+  display: block;
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  transition: 250ms all;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.category-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  margin-bottom: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+  overflow: hidden;
+  border-radius: 8px;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &.category-img-large {
+    height: 330px;
+  }
+}
+
+.category-title {
+  padding-top: 0.25rem;
+}

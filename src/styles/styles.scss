@@ -1,0 +1,35 @@
+﻿:root {
+  --bs-dark: rgb(33, 37, 41);
+  font-family: "Rubik", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding-left: 5em;
+  padding-right: 5em;
+  background-color: rgb(243, 243, 243);
+  background-image: url("../../public/img/i-like-food.svg");
+}
+
+.container {
+  padding-left: 1em;
+  padding-right: 1em;
+  background-color: #fff;
+  box-shadow: 0 0.5rem 11rem rgba(0, 0, 0, 0.4);
+  max-width: 1920px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@import "partials/header-section";
+@import "partials/footer-section";
+@import "partials/hero-section";
+@import "partials/catgegory-section";
+@import "partials/latest-section";
+@import "partials/recipe-card-section";
+@import "partials/submit-section";

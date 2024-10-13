@@ -1,0 +1,5 @@
+﻿{
+  "watch": ["server", "app.cjs"],
+  "ignore": ["public", "dist"],
+  "ext": "cjs,js,json"
+}
