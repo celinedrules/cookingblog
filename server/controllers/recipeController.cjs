@@ -5,8 +5,6 @@ exports.homepage = async (req, res) => {
     try {
         const limitNumber = 5;
         const categories = await Category.find({}).limit(limitNumber);
-
-
         res.json({
             title: "Cooking Blog - Home",
             categories: categories,
@@ -14,6 +12,23 @@ exports.homepage = async (req, res) => {
         });
     } catch (e) {
         res.status(500).send({message: e.message || "Error Occurred"});
+    }
+};
+
+exports.exploreCategories = async (req, res) => {
+    try {
+        const limitNumber = 20;
+        const categories = await Category.find({}).limit(limitNumber);
+        console.log("Categories fetched: ", categories);  // Debugging log
+
+        res.json({
+            title: "Cooking Blog - Explore Categories",
+            categories: categories,
+            message: "Explore a wide range of categories!",
+        });
+    } catch (e) {
+        console.error("Error in exploreCategories:", e);  // Log the error
+        res.status(500).send({ message: e.message || "Error Occurred" });
     }
 };
 

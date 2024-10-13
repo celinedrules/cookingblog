@@ -41,3 +41,10 @@
 .category-title {
   padding-top: 0.25rem;
 }
+
+.categories-explore{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}

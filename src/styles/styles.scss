@@ -33,3 +33,33 @@ body {
 @import "partials/latest-section";
 @import "partials/recipe-card-section";
 @import "partials/submit-section";
+
+.breadcrumb {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+}
+
+.breadcrumb-item {
+  margin-right: 0.5rem;
+}
+
+.breadcrumb-item::after {
+  content: "/";
+  margin-left: 0.5rem;
+}
+
+.breadcrumb-item:last-child::after {
+  content: "";  /* Removes the slash after the last item */
+}
+
+.breadcrumb-item a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.breadcrumb-item.active {
+  color: #6c757d;
+}
