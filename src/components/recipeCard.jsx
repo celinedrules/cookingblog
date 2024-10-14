@@ -1,12 +1,12 @@
-﻿const RecipeCard = () => {
+﻿const RecipeCard = ({recipe}) => {
     return (
         <div className="recipe-card">
-            <a href="/recipe#" className="recipe-card-link category-link">
+            <a href={`/recipe/${recipe._id}`} className="recipe-card-link category-link">
                 <div className="category-img category-img-large">
-                    <img src="/img/chocolate-banoffe-whoopie-pies.jpg" loading="lazy"/>
+                    <img src={`/uploads/${recipe.image}`} alt={recipe.name} loading="lazy"/>
                 </div>
                 <div className="category-title">
-                    Chocolate Banoffe
+                    {recipe.name}
                 </div>
             </a>
         </div>

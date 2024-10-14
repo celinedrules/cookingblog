@@ -7,7 +7,7 @@ import Home from "./pages/home.jsx";
 import ExploreCategories from "./pages/exploreCategories.jsx";
 
 function App() {
-    const [data, setData] = useState({title: '', message: '', categories: []});
+    const [data, setData] = useState({title: '', message: '', categories: [], food: { latest: [], thai: [], american: [], chinese: [] }});
 
     useEffect(() => {
         // Set the document title when data.title is updated
@@ -27,7 +27,7 @@ function App() {
             <div className="container">
                 <Header/>
                 <Routes>
-                    <Route path="/" element={<Home categories={data.categories}/>}/>
+                    <Route path="/" element={<Home categories={data.categories} food={data.food} />}/>
                     <Route path="/categories" element={<ExploreCategories/>}/>
                 </Routes>
                 <Footer/>

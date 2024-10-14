@@ -1,6 +1,6 @@
 ﻿import RecipeCard from "./recipeCard.jsx";
 
-const Latest = () => {
+const Latest = ({latest}) => {
     return (
         <section className="latest">
             <div className="latest-title">
@@ -8,11 +8,9 @@ const Latest = () => {
                 <a href="/explore-latest">View More</a>
             </div>
             <div className="latest-cards">
-                <RecipeCard/>
-                <RecipeCard/>
-                <RecipeCard/>
-                <RecipeCard/>
-                <RecipeCard/>
+                {latest.map((recipe, index) => (
+                    <RecipeCard key={index} recipe={recipe}/>
+                ))}
             </div>
         </section>
     );

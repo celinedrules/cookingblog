@@ -15,6 +15,7 @@ async function connectDB() {
 connectDB();
 
 require("./Category.cjs");
+require("./Recipe.cjs");
 
 module.exports = connectDB;
 
