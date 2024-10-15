@@ -7,11 +7,13 @@ exports.homepage = async (req, res) => {
         const limitNumber = 5;
         const categories = await Category.find({}).limit(limitNumber);
         const latest = await Recipe.find({}).sort({_id: -1}).limit(limitNumber);
-        const thai = await  Recipe.find({'category': 'Thai'}).limit(limitNumber);
-        const american = await  Recipe.find({'category': 'American'}).limit(limitNumber);
-        const chinese = await  Recipe.find({'category': 'Chinese'}).limit(limitNumber);
+        const distinctCategories = await Recipe.distinct('category');
+        const food = {latest};
+        const categoryPromises = distinctCategories.map(async (category) => {
+            food[category.toLowerCase()] = await Recipe.find({ category }).limit(limitNumber);
+        });
 
-        const food = {latest, thai, american, chinese};
+        await Promise.all(categoryPromises);
 
         res.json({
             title: "Cooking Blog - Home",
@@ -23,6 +25,31 @@ exports.homepage = async (req, res) => {
         res.status(500).send({message: e.message || "Error Occurred"});
     }
 };
+
+// exports.homepage = async (req, res) => {
+//     try {
+//         const limitNumber = 5;
+//         const categories = await Category.find({}).limit(limitNumber);
+//         const latest = await Recipe.find({}).sort({_id: -1}).limit(limitNumber);
+//         const thai = await Recipe.find({'category': 'Thai'}).limit(limitNumber);
+//         const american = await Recipe.find({'category': 'American'}).limit(limitNumber);
+//         const mexican = await Recipe.find({'category': 'Mexican'}).limit(limitNumber);
+//         const indian = await Recipe.find({'category': 'Indian'}).limit(limitNumber);
+//         const spanish = await Recipe.find({'category': 'Spanish'}).limit(limitNumber);
+//         const chinese = await Recipe.find({'category': 'Chinese'}).limit(limitNumber);
+//
+//         const food = {latest, thai, american, mexican, indian, spanish, chinese};
+//
+//         res.json({
+//             title: "Cooking Blog - Home",
+//             categories: categories,
+//             food: food,
+//             message: "Welcome to the Cooking Blog!",
+//         });
+//     } catch (e) {
+//         res.status(500).send({message: e.message || "Error Occurred"});
+//     }
+// };
 
 exports.exploreCategories = async (req, res) => {
     try {
@@ -37,6 +64,17 @@ exports.exploreCategories = async (req, res) => {
         });
     } catch (e) {
         console.error("Error in exploreCategories:", e);  // Log the error
+        res.status(500).send({message: e.message || "Error Occurred"});
+    }
+};
+
+exports.getRecipeByCategory = async (req, res) => {
+    try {
+        const {category} = req.query;
+        const recipes = await Recipe.find({category});
+        res.json({recipes});
+    } catch (e) {
+        console.error("Error in getRecipeByCategory", e);
         res.status(500).send({message: e.message || "Error Occurred"});
     }
 };
