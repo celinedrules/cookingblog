@@ -1,0 +1,89 @@
+﻿// General container styling for rows and columns
+.recipe-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -0.5rem; // Offsets for columns to align with the container
+  margin-right: -0.5rem;
+
+  .recipe-section {
+    width: 100%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .recipe-image-md {
+      width: 33.3333%; // Takes one-third of the container
+    }
+
+    .recipe-details {
+      width: 66.6667%; // Takes two-thirds of the container
+    }
+  }
+}
+
+// Image styling for responsiveness and sticky behavior
+.recipe-image {
+  max-width: 100%;
+  height: auto;
+  position: sticky;
+  top: 20px; // Offset as specified in your style attribute
+  z-index: 1020; // Ensures it stays above other elements
+}
+
+// Heading and text styling
+.recipe-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.recipe-category {
+  margin-bottom: 1.5rem;
+}
+
+.subheading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+// List group styling for ingredients
+.recipe-ingredients {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+
+  .ingredient-item {
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid #dee2e6;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+// Flush style for removing borders and padding
+.recipe-ingredients-flush {
+  border: none;
+  border-radius: 0;
+
+  .ingredient-item {
+    border-left: none;
+    border-right: none;
+    border-top: none;
+  }
+}
+
+// Padding and margin adjustments for specific sections
+.recipe-container-ingredients {
+  padding-top: 1.5rem;
+}
+
+.recipe-directions {
+  white-space: pre-line;
+}

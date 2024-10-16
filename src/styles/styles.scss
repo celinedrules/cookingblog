@@ -26,12 +26,14 @@ body {
   margin-right: auto;
 }
 
+@import 'bootstrap-icons/font/bootstrap-icons.css';
 @import "partials/header-section";
 @import "partials/footer-section";
 @import "partials/hero-section";
 @import "partials/catgegory-section";
 @import "partials/latest-section";
 @import "partials/recipe-card-section";
+@import "partials/recipe-section";
 @import "partials/submit-section";
 
 .breadcrumb {

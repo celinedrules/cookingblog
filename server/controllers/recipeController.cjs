@@ -10,7 +10,7 @@ exports.homepage = async (req, res) => {
         const distinctCategories = await Recipe.distinct('category');
         const food = {latest};
         const categoryPromises = distinctCategories.map(async (category) => {
-            food[category.toLowerCase()] = await Recipe.find({ category }).limit(limitNumber);
+            food[category.toLowerCase()] = await Recipe.find({category}).limit(limitNumber);
         });
 
         await Promise.all(categoryPromises);
@@ -30,13 +30,13 @@ exports.homepage = async (req, res) => {
 //     try {
 //         const limitNumber = 5;
 //         const categories = await Category.find({}).limit(limitNumber);
-//         const latest = await Recipe.find({}).sort({_id: -1}).limit(limitNumber);
-//         const thai = await Recipe.find({'category': 'Thai'}).limit(limitNumber);
-//         const american = await Recipe.find({'category': 'American'}).limit(limitNumber);
-//         const mexican = await Recipe.find({'category': 'Mexican'}).limit(limitNumber);
-//         const indian = await Recipe.find({'category': 'Indian'}).limit(limitNumber);
-//         const spanish = await Recipe.find({'category': 'Spanish'}).limit(limitNumber);
-//         const chinese = await Recipe.find({'category': 'Chinese'}).limit(limitNumber);
+//         const latest = await RecipePage.find({}).sort({_id: -1}).limit(limitNumber);
+//         const thai = await RecipePage.find({'category': 'Thai'}).limit(limitNumber);
+//         const american = await RecipePage.find({'category': 'American'}).limit(limitNumber);
+//         const mexican = await RecipePage.find({'category': 'Mexican'}).limit(limitNumber);
+//         const indian = await RecipePage.find({'category': 'Indian'}).limit(limitNumber);
+//         const spanish = await RecipePage.find({'category': 'Spanish'}).limit(limitNumber);
+//         const chinese = await RecipePage.find({'category': 'Chinese'}).limit(limitNumber);
 //
 //         const food = {latest, thai, american, mexican, indian, spanish, chinese};
 //
@@ -79,6 +79,17 @@ exports.getRecipeByCategory = async (req, res) => {
     }
 };
 
+exports.getRecipe = async (req, res) => {
+    try {
+        const {id} = req.params;
+        const recipe = await Recipe.findById(id);
+        res.json(recipe);
+    } catch (e) {
+        console.error("Error in getRecipe:", e);
+        res.status(500).json({message: e.message || "Error occurred"});
+    }
+};
+
 // async function insertDummyCategoryData() {
 //     try {
 //         await Category.insertMany(
@@ -114,7 +125,7 @@ exports.getRecipeByCategory = async (req, res) => {
 
 // async function insertDummyRecipeData() {
 //     try {
-//         await Recipe.insertMany(
+//         await RecipePage.insertMany(
 //             [{
 //                 "name": "Crab cakes",
 //                 "description": "\n        Preheat the oven to 175ºC/gas 3. Lightly grease a 22cm metal or glass pie dish with a little of the butter.\n        For the pie crust, blend the biscuits, sugar and remaining butter in a food processor until the mixture resembles breadcrumbs.\n        Transfer to the pie dish and spread over the bottom and up the sides, firmly pressing down.\n        Bake for 10 minutes, or until lightly browned. Remove from oven and place the dish on a wire rack to cool.\n        For the filling, whisk the egg yolks in a bowl. Gradually whisk in the condensed milk until smooth.\n        Mix in 6 tablespoons of lime juice, then pour the filling into the pie crust and level over with the back of a spoon.\n        Return to the oven for 15 minutes, then place on a wire rack to cool.\n        Once cooled, refrigerate for 6 hours or overnight.\n        To serve, whip the cream until it just holds stiff peaks. Add dollops of cream to the top of the pie, and grate over some lime zest, for extra zing if you like.\n    \n        Source: https://www.jamieoliver.com/recipes/fruit-recipes/key-lime-pie/",

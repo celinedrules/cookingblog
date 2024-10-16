@@ -6,6 +6,7 @@ import Footer from "./components/footer.jsx";
 import Home from "./pages/home.jsx";
 import ExploreCategories from "./pages/exploreCategories.jsx";
 import CategoryPage from "./pages/categoryPage.jsx";
+import Recipe from "./pages/recipe.jsx";
 
 function App() {
     const [data, setData] = useState(
@@ -34,7 +35,8 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home categories={data.categories} food={data.food}/>}/>
                     <Route path="/categories" element={<ExploreCategories/>}/>
-                    <Route path="/categories/:categoryName" element={<CategoryPage />} />
+                    <Route path="/categories/:categoryName" element={<CategoryPage/>}/>
+                    <Route path="/recipe/:id" element={<Recipe/>}/>
                 </Routes>
                 <Footer/>
             </div>
