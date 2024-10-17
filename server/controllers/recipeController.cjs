@@ -90,6 +90,32 @@ exports.getRecipe = async (req, res) => {
     }
 };
 
+exports.searchRecipe = async (req, res) => {
+    try {
+        const { query } = req.body; // Make sure this is received correctly
+        if (!query) {
+            return res.status(400).json({ message: "Query is required" });
+        }
+
+        // Use MongoDB's text search with $text operator
+        const recipes = await Recipe.find({
+            $text: { $search: query }  // This performs a text search on the indexed fields
+        });
+
+        res.json({
+            title: "Cooking Blog - Search Results",
+            recipes,
+        });
+    } catch (error) {
+        console.error("Error during search:", error);
+        res.status(500).json({ message: "Error occurred during the search", error });
+    }
+};
+
+
+
+
+
 // async function insertDummyCategoryData() {
 //     try {
 //         await Category.insertMany(

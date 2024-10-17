@@ -7,6 +7,7 @@ import Home from "./pages/home.jsx";
 import ExploreCategories from "./pages/exploreCategories.jsx";
 import CategoryPage from "./pages/categoryPage.jsx";
 import Recipe from "./pages/recipe.jsx";
+import SearchPage from "./pages/searchPage.jsx";
 
 function App() {
     const [data, setData] = useState(
@@ -37,6 +38,8 @@ function App() {
                     <Route path="/categories" element={<ExploreCategories/>}/>
                     <Route path="/categories/:categoryName" element={<CategoryPage/>}/>
                     <Route path="/recipe/:id" element={<Recipe/>}/>
+                    <Route path="/search" element={<SearchPage/>}/>
+
                 </Routes>
                 <Footer/>
             </div>
