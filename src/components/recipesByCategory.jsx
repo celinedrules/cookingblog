@@ -1,4 +1,4 @@
-﻿import RecipeCard from "./recipeCard.jsx";
+﻿import RecipeList from "./recipeList.jsx";
 
 const RecipesByCategory = ({categoryName, recipes = []}) => {
     return (
@@ -7,13 +7,7 @@ const RecipesByCategory = ({categoryName, recipes = []}) => {
                 <h2>{categoryName} Recipes</h2>
                 <a href={`/categories/${categoryName}`}>View More</a>
             </div>
-            <div className="latest-cards">
-                {recipes.length > 0 ? (
-                    recipes.map((recipe, index) => (
-                        <RecipeCard key={index} recipe={recipe}/>
-                    ))) : (<p>No recipes available for {categoryName}</p>
-                )}
-            </div>
+            <RecipeList recipes={recipes} categoryName={categoryName} />
         </section>
     );
 };

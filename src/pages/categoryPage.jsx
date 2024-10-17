@@ -1,8 +1,9 @@
-﻿import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+﻿import {Link, useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
+import RecipeList from "../components/recipeList.jsx";
 
 const CategoryPage = () => {
-    const { categoryName } = useParams(); // Extract category name from URL
+    const {categoryName} = useParams(); // Extract category name from URL
     const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {
@@ -15,15 +16,14 @@ const CategoryPage = () => {
     return (
         <div>
             <h1>{categoryName} Recipes</h1>
-            <div className="recipe-list">
-                {recipes.map((recipe, index) => (
-                    <div key={index} className="recipe-card">
-                        <img src={`/img/${recipe.image}`} alt={recipe.name} />
-                        <h3>{recipe.name}</h3>
-                        <p>{recipe.description}</p>
-                    </div>
-                ))}
-            </div>
+            <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                    <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+                    <li className="breadcrumb-item"><Link to="/categories">Categories</Link></li>
+                    <li className="breadcrumb-item active" aria-current="page">{categoryName} Recipes</li>
+                </ol>
+            </nav>
+            <RecipeList recipes={recipes} categoryName={categoryName} />
         </div>
     );
 };
