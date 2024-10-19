@@ -42,14 +42,14 @@ const SearchPage = () => {
 
     return (
         <div>
-            <h1>Search Results for `{query}`</h1>
+            <h1 className="search-title">Search Results for `{query}`</h1>
             <div className="search-results">
                 {errorMessage ? (
                     <p>{errorMessage}</p>
                 ) : (
                     searchResults.length > 0 ? (
                         searchResults.map((recipe, index) => (
-                            <div className="latest-cards" key={index}>
+                            <div key={index}>
                                 <RecipeCard key={index} recipe={recipe}/>
                             </div>
                         ))
