@@ -112,7 +112,16 @@ exports.searchRecipe = async (req, res) => {
     }
 };
 
-
+exports.exploreLatest = async (req, res) => {
+    try {
+        const limitNumber = 20;
+        const recipes = await Recipe.find({}).sort({_id: -1}).limit(limitNumber);
+        res.json(recipes);
+    } catch (e) {
+        console.error("Error in getRecipe:", e);
+        res.status(500).json({message: e.message || "Error occurred"});
+    }
+};
 
 
 

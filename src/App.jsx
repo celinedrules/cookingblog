@@ -8,6 +8,7 @@ import ExploreCategories from "./pages/exploreCategories.jsx";
 import CategoryPage from "./pages/categoryPage.jsx";
 import Recipe from "./pages/recipe.jsx";
 import SearchPage from "./pages/searchPage.jsx";
+import ExploreLatest from "./pages/exploreLatest.jsx";
 
 function App() {
     const [data, setData] = useState(
@@ -39,7 +40,7 @@ function App() {
                     <Route path="/categories/:categoryName" element={<CategoryPage/>}/>
                     <Route path="/recipe/:id" element={<Recipe/>}/>
                     <Route path="/search" element={<SearchPage/>}/>
-
+                    <Route path="/explore-latest" element={<ExploreLatest/>}/>
                 </Routes>
                 <Footer/>
             </div>
