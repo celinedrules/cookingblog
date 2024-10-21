@@ -1,4 +1,21 @@
-﻿const Hero = () => {
+﻿import {useNavigate} from "react-router-dom";
+
+const Hero = () => {
+    const navigate = useNavigate();
+    const handleExploreLatest = () => {
+        navigate("/exploreLatest");
+    };
+    const handleGetRandomRecipe = () => {
+        fetch("/api/randomRecipe")
+            .then((response) => response.json())
+            .then((data) => {
+                navigate(`/recipe/${data._id}`);  // Navigate to the random recipe
+            })
+            .catch((error) => {
+                console.error("Error fetching random recipe:", error);
+            });
+    };
+
     return (
         <div className="hero-row">
             <div className="her-col">
@@ -13,8 +30,8 @@
                 </p>
                 <div className="explore">
                     {/* Change to routes */}
-                    <a className="btn-latest" href="/explore-latest">Explore Latest</a>
-                    <a className="btn-random" href="/explore-random">Show Random</a>
+                    <button className="btn-latest" onClick={handleExploreLatest}>Explore Latest</button>
+                    <button className="btn-random" onClick={handleGetRandomRecipe}>Show Random</button>
                 </div>
             </div>
         </div>

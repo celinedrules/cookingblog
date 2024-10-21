@@ -40,7 +40,7 @@ function App() {
                     <Route path="/categories/:categoryName" element={<CategoryPage/>}/>
                     <Route path="/recipe/:id" element={<Recipe/>}/>
                     <Route path="/search" element={<SearchPage/>}/>
-                    <Route path="/explore-latest" element={<ExploreLatest/>}/>
+                    <Route path="/exploreLatest" element={<ExploreLatest/>}/>
                 </Routes>
                 <Footer/>
             </div>

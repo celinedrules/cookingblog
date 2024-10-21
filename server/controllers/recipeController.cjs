@@ -92,14 +92,14 @@ exports.getRecipe = async (req, res) => {
 
 exports.searchRecipe = async (req, res) => {
     try {
-        const { query } = req.body; // Make sure this is received correctly
+        const {query} = req.body; // Make sure this is received correctly
         if (!query) {
-            return res.status(400).json({ message: "Query is required" });
+            return res.status(400).json({message: "Query is required"});
         }
 
         // Use MongoDB's text search with $text operator
         const recipes = await Recipe.find({
-            $text: { $search: query }  // This performs a text search on the indexed fields
+            $text: {$search: query}  // This performs a text search on the indexed fields
         });
 
         res.json({
@@ -108,7 +108,7 @@ exports.searchRecipe = async (req, res) => {
         });
     } catch (error) {
         console.error("Error during search:", error);
-        res.status(500).json({ message: "Error occurred during the search", error });
+        res.status(500).json({message: "Error occurred during the search", error});
     }
 };
 
@@ -118,11 +118,23 @@ exports.exploreLatest = async (req, res) => {
         const recipes = await Recipe.find({}).sort({_id: -1}).limit(limitNumber);
         res.json(recipes);
     } catch (e) {
-        console.error("Error in getRecipe:", e);
+        console.error("Error in exploreLatest:", e);
         res.status(500).json({message: e.message || "Error occurred"});
     }
 };
 
+exports.randomRecipe = async (req, res) => {
+    try {
+        const count = await Recipe.countDocuments(); // No need to use `find()` here, just `countDocuments`
+        const random = Math.floor(Math.random() * count);
+        const recipe = await Recipe.findOne().skip(random); // No need for `exec()` here, `.findOne()` returns a promise
+
+        res.json(recipe);
+    } catch (e) {
+        console.error("Error in randomRecipe:", e);
+        res.status(500).json({message: e.message || "Error occurred"});
+    }
+};
 
 
 // async function insertDummyCategoryData() {
