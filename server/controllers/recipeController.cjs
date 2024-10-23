@@ -136,6 +136,14 @@ exports.randomRecipe = async (req, res) => {
     }
 };
 
+exports.submitRecipe = async (req, res) => {
+    try {
+
+    } catch (e) {
+        console.error("Error in submitRecipe", e);
+        res.status(500).json({message: e.message || "Error occurred"});
+    }
+}
 
 // async function insertDummyCategoryData() {
 //     try {

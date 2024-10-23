@@ -19,7 +19,7 @@ const Header = () => {
             <ul className="nav-container">
                 <li><a href="/" className="nav-link">Home</a></li>
                 <li><a href="/about" className="nav-link">About</a></li>
-                <li><a href="/submit-recipe" className="nav-link">Submit</a></li>
+                <li><a href="/submitPage" className="nav-link">Submit</a></li>
                 <li><a href="/contact" className="nav-link">Contact</a></li>
             </ul>
             <div className="search-container">
