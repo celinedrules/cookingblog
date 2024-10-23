@@ -23,15 +23,15 @@ const SubmitPage = () => {
                         <div className="recipe-row">
                             <div className="recipe-col-12">
                                 <label htmlFor="email" className="form-label">Email</label>
-                                <input type="email" name="email" id="email" className="category-select"/>
+                                <input type="email" name="email" id="email" className="form-control"/>
                             </div>
                             <div className="recipe-col-12">
                                 <label htmlFor="name" className="form-label">Recipe Name</label>
-                                <input type="text" name="name" id="name" className="category-select"/>
+                                <input type="text" name="name" id="name" className="form-control"/>
                             </div>
                             <div className="recipe-col-12">
                                 <label htmlFor="description" className="form-label">Description</label>
-                                <textarea className="category-select" name="description" id="description" cols={30}
+                                <textarea className="form-control" name="description" id="description" cols={30}
                                           rows={4}/>
                             </div>
                             <div className="recipe-col-12">
@@ -39,7 +39,7 @@ const SubmitPage = () => {
                                 <small>Example: Ice</small>
                                 <div className="ingredientList">
                                     <div className="ingredientDiv">
-                                        <input type="text" name="ingredients"/>
+                                        <input type="text" name="ingredients" className="form-control"/>
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +51,7 @@ const SubmitPage = () => {
 
                             <div className="recipe-col-12">
                                 <label htmlFor="category">Select Category</label>
-                                <select className="category-select" name="category" value={selectedCategory}
+                                <select className="form-control" name="category" value={selectedCategory}
                                         onChange={handleChange} aria-label="category">
                                     <option value="" disabled>Select Category</option>
                                     <option value="Thai">Thai</option>
@@ -65,7 +65,7 @@ const SubmitPage = () => {
 
                             <div className="recipe-col-12">
                                 <label htmlFor="image">Photo</label>
-                                <input type="file" className="category-select" name="image" accept="image/*"/>
+                                <input type="file" className="form-control" name="image" accept="image/*"/>
                             </div>
                             <div className="recipe-col-12-col">
                                 <button type="submit" className="btn-submit">Submit Recipe</button>
