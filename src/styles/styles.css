@@ -499,6 +499,44 @@ body {
   box-sizing: border-box;
 }
 
+.ingredient-div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.ingredient-div input {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.custom-file-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+
+input[type=file] {
+  display: none;
+}
+
+.file-name {
+  font-size: 14px;
+  color: #333;
+  margin-top: 5px;
+}
+
+.image-preview-container {
+  margin-top: 10px;
+}
+
+.image-preview {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 10px;
+}
+
 .search-title {
   padding-bottom: 1.5rem;
 }
