@@ -136,14 +136,77 @@ exports.randomRecipe = async (req, res) => {
     }
 };
 
-exports.submitRecipe = async (req, res) => {
-    try {
+// exports.submitRecipe = async (req, res) => {
+//     try {
+//         res.json({
+//             title: 'Cooking Blog - Submit Recipe',
+//             message: 'Recipe submitted successfully!',
+//         });
+//     } catch (e) {
+//         console.error("Error in submitRecipe", e);
+//         res.status(500).json({message: e.message || "Error occurred"});
+//     }
+// }
 
+const path = require('path');
+
+exports.submitRecipeOnPost = async (req, res) => {
+    try {
+        let newImageName = "";
+
+        // Check if a file was uploaded
+        if (req.files && req.files.image) {
+            const imageUploadFile = req.files.image;
+            newImageName = path.basename(imageUploadFile.name) + '_' + Date.now();  // Add timestamp + original name
+            const uploadPath = path.resolve('./public/uploads/', newImageName);
+
+            // Move the file
+            await imageUploadFile.mv(uploadPath);
+        } else {
+            console.log('No files were uploaded!');
+        }
+
+        // Create the new recipe
+        const newRecipe = new Recipe({
+            name: req.body.name,
+            description: req.body.description,
+            email: req.body.email,
+            ingredients: req.body['ingredients[]'],  // Access the ingredients array
+            category: req.body.category,
+            image: newImageName || 'default.jpg'  // Set a default image if none was uploaded
+        });
+
+        // Save the recipe to the database
+        await newRecipe.save();
+
+        res.json({
+            title: "Cooking Blog - Submit Recipe",
+            message: "Recipe submitted successfully!"
+        });
     } catch (e) {
         console.error("Error in submitRecipe", e);
         res.status(500).json({message: e.message || "Error occurred"});
     }
-}
+};
+
+// async function updateRecipe(){
+//     try{
+//         const res = await Recipe.updateOne({name: 'New Recipe'}, { name: 'New Recipe Updated'});
+//         res.n;
+//         res.nModified;
+//     } catch (e){
+//         console.error("Error in updateRecipe", e);
+//     }
+// }
+
+// async function deleteRecipe() {
+//     try {
+//         await Recipe.deleteOne({name: 'New Recipe'});
+//     } catch (e) {
+//         console.error("Error in updateRecipe", e);
+//     }
+// }
+
 
 // async function insertDummyCategoryData() {
 //     try {

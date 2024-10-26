@@ -4,6 +4,9 @@ const SubmitPage = () => {
     const [selectedCategory, setSelectedCategory] = useState("");
     const [ingredients, setIngredients] = useState([""]); // Initial ingredient input
     const [imagePreview, setImagePreview] = useState(null); // To store image preview
+    const [responseMessage, setResponseMessage] = useState("");  // Add a state for success message
+    const [isSuccessful, setIsSuccessful] = useState(false);
+
 
     const handleChange = (event) => {
         setSelectedCategory(event.target.value);
@@ -37,6 +40,37 @@ const SubmitPage = () => {
         }
     };
 
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(event.target); // Collect form data
+
+        try {
+            const response = await fetch('/api/submitRecipe', {
+                method: 'POST',
+                body: formData
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                setResponseMessage(data.message); // Set success message
+                setIsSuccessful(true);
+                event.target.reset(); // Reset the form fields
+                setSelectedCategory(""); // Clear selected category state
+                setIngredients([""]); // Reset ingredients to initial state
+                setImagePreview(null); // Clear image preview
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            } else {
+                console.error("Failed to submit recipe:", data.message);
+                setResponseMessage(data.message);
+                setIsSuccessful(false);
+            }
+        } catch (error) {
+            console.error("Error during recipe submission:", error);
+            setResponseMessage("An unexpected error occurred. Please try again later.");
+            setIsSuccessful(false);
+        }
+    };
 
     return (
         <div>
@@ -49,9 +83,17 @@ const SubmitPage = () => {
                     </p>
                 </div>
             </div>
+
             <div className="form-container">
+                {responseMessage && (
+                    <div
+                        className={`recipe-col-8 custom-alert ${isSuccessful ? 'custom-alert-success' : 'custom-alert-danger'}`}>
+                        <p className="response-message">{responseMessage}</p>
+                    </div>
+                )}
                 <div className="recipe-col-8">
-                    <form action="/submitPage" encType="multipart/form-data" method="POST">
+                    <form action="/api/submitRecipe" encType="multipart/form-data" method="POST"
+                          onSubmit={handleSubmit}>
                         <div className="recipe-row">
                             <div className="recipe-col-12">
                                 <label htmlFor="email" className="form-label">Email</label>
@@ -74,13 +116,14 @@ const SubmitPage = () => {
                                         <div className="ingredient-div" key={index}>
                                             <input
                                                 type="text"
-                                                name={`ingredients[${index}]`}
+                                                name="ingredients[]"
                                                 className="form-control"
                                                 value={ingredient}
                                                 onChange={(e) => handleIngredientChange(index, e.target.value)}
                                             />
                                             <button type="button" className="btn-ingredient"
-                                                    onClick={() => removeIngredient(index)}>-
+                                                    onClick={() => removeIngredient(index)}>
+                                                -
                                             </button>
                                         </div>
                                     ))}
