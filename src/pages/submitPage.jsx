@@ -2,11 +2,10 @@
 
 const SubmitPage = () => {
     const [selectedCategory, setSelectedCategory] = useState("");
-    const [ingredients, setIngredients] = useState([""]); // Initial ingredient input
-    const [imagePreview, setImagePreview] = useState(null); // To store image preview
-    const [responseMessage, setResponseMessage] = useState("");  // Add a state for success message
+    const [ingredients, setIngredients] = useState([""]);
+    const [imagePreview, setImagePreview] = useState(null);
+    const [responseMessage, setResponseMessage] = useState("");
     const [isSuccessful, setIsSuccessful] = useState(false);
-
 
     const handleChange = (event) => {
         setSelectedCategory(event.target.value);
@@ -32,18 +31,18 @@ const SubmitPage = () => {
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setImagePreview(reader.result); // Set the image preview
+                setImagePreview(reader.result);
             };
-            reader.readAsDataURL(file); // Convert image to base64 string
+            reader.readAsDataURL(file);
         } else {
-            setImagePreview(null); // Clear the preview if no file is selected
+            setImagePreview(null);
         }
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const formData = new FormData(event.target); // Collect form data
+        const formData = new FormData(event.target);
 
         try {
             const response = await fetch('/api/submitRecipe', {
@@ -53,12 +52,12 @@ const SubmitPage = () => {
 
             const data = await response.json();
             if (response.ok) {
-                setResponseMessage(data.message); // Set success message
+                setResponseMessage(data.message);
                 setIsSuccessful(true);
-                event.target.reset(); // Reset the form fields
-                setSelectedCategory(""); // Clear selected category state
-                setIngredients([""]); // Reset ingredients to initial state
-                setImagePreview(null); // Clear image preview
+                event.target.reset();
+                setSelectedCategory("");
+                setIngredients([""]);
+                setImagePreview(null);
                 window.scrollTo({top: 0, behavior: 'smooth'});
             } else {
                 console.error("Failed to submit recipe:", data.message);

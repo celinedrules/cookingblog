@@ -1,14 +1,12 @@
-﻿//import Category from "../components/category.jsx";
-import {Link} from "react-router-dom";
+﻿import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import Category from "../components/category.jsx";
 
 const ExploreCategories = () => {
-    const [data, setData] = useState({ title: '', message: '', categories: [] });
+    const [data, setData] = useState({title: '', message: '', categories: []});
 
     useEffect(() => {
-        // Fetch data specifically for the explore categories page
-        fetch('/api/categories')  // Fetch from the /categories endpoint
+        fetch('/api/categories')
             .then(response => response.json())
             .then(data => setData(data))
             .catch(error => console.error('Error fetching categories:', error));

@@ -1,5 +1,5 @@
-﻿import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+﻿import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 const Header = () => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -14,7 +14,7 @@ const Header = () => {
     return (
         <div className="header">
             <a href="/" className="logo-container">
-                <img src="/img/logo.svg" width="229" height="68" alt="Cooking Blog - Made with Node.js" />
+                <img src="/img/logo.svg" width="229" height="68" alt="Cooking Blog - Made with Node.js"/>
             </a>
             <ul className="nav-container">
                 <li><a href="/" className="nav-link">Home</a></li>

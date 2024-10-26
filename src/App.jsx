@@ -27,7 +27,7 @@ function App() {
     }, [data.title])
 
     useEffect(() => {
-        fetch('/api')  // Assuming you've proxied '/api' to the Express server
+        fetch('/api')
             .then(response => response.json())
             .then(data => setData(data));
     }, []);

@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import RecipeList from "../components/recipeList.jsx";
 
 const CategoryPage = () => {
-    const {categoryName} = useParams(); // Extract category name from URL
+    const {categoryName} = useParams();
     const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {

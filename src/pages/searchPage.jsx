@@ -1,5 +1,5 @@
-﻿import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+﻿import {useLocation} from "react-router-dom";
+import {useEffect, useState} from "react";
 import RecipeCard from "../components/recipeCard.jsx";
 
 const useQuery = () => {
@@ -8,7 +8,7 @@ const useQuery = () => {
 
 const SearchPage = () => {
     const [searchResults, setSearchResults] = useState([]);
-    const [errorMessage, setErrorMessage] = useState(null); // Handle errors
+    const [errorMessage, setErrorMessage] = useState(null);
     const query = useQuery().get("query");
 
     useEffect(() => {
@@ -18,7 +18,7 @@ const SearchPage = () => {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ query }),
+                body: JSON.stringify({query}),
             })
                 .then((response) => {
                     if (!response.ok) {

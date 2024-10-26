@@ -7,7 +7,7 @@ const RecipesByCategory = ({categoryName, recipes = []}) => {
                 <h2>{categoryName} Recipes</h2>
                 <a href={`/categories/${categoryName}`}>View More</a>
             </div>
-            <RecipeList recipes={recipes} categoryName={categoryName} />
+            <RecipeList recipes={recipes} categoryName={categoryName}/>
         </section>
     );
 };

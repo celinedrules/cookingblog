@@ -1,12 +1,12 @@
-﻿import { useEffect, useState } from "react";
-import RecipeCard from "../components/recipeCard.jsx"; // Assuming you have this component
+﻿import {useEffect, useState} from "react";
+import RecipeCard from "../components/recipeCard.jsx";
 
 const ExploreLatest = () => {
     const [recipes, setRecipes] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
 
     useEffect(() => {
-        fetch("/api/exploreLatest")  // API call to fetch latest recipes
+        fetch("/api/exploreLatest")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Network response was not ok");
@@ -36,7 +36,7 @@ const ExploreLatest = () => {
                     recipes.length > 0 ? (
                         recipes.map((recipe, index) => (
                             <div key={index}>
-                                <RecipeCard key={index} recipe={recipe} />
+                                <RecipeCard key={index} recipe={recipe}/>
                             </div>
                         ))
                     ) : (
