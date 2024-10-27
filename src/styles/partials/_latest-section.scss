@@ -1,21 +1,19 @@
 ﻿.latest {
-
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding: 1.5rem 0;
 }
 
-.latest-cards{
+.latest-cards {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
 }
 
-.latest-title{
+.latest-title {
   display: flex;
-  margin-bottom: .5rem;
   align-items: center;
+  margin-bottom: 0.5rem;
 
-  a{
+  a {
     margin-left: auto;
   }
 }

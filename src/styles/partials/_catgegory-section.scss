@@ -1,17 +1,23 @@
-﻿.categories {
+﻿.categories, .categories-explore {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
   gap: 1rem;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding: 1.5rem 0;
+
+  &.categories {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  &.categories-explore {
+    grid-template-columns: repeat(5, 1fr);
+    margin-bottom: 1.5rem;
+  }
 }
 
 .category-link {
   display: block;
-  flex: 1;
   text-align: center;
   text-decoration: none;
-  transition: 250ms all;
+  transition: transform 250ms;
 
   &:hover {
     transform: scale(1.1);
@@ -24,7 +30,7 @@
   align-items: center;
   height: 100px;
   margin-bottom: 10px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   overflow: hidden;
   border-radius: 8px;
 
@@ -40,11 +46,4 @@
 
 .category-title {
   padding-top: 0.25rem;
-}
-
-.categories-explore{
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
-  margin-bottom: 1.5rem;
 }

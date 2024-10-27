@@ -5,7 +5,7 @@ const Latest = ({latest}) => {
         <section className="latest">
             <div className="latest-title">
                 <h2>Latest Recipes</h2>
-                <a href="/explore-latest">View More</a>
+                <a href="/exploreLatest">View More</a>
             </div>
             <div className="latest-cards">
                 {latest.map((recipe, index) => (

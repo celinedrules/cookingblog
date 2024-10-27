@@ -1,6 +1,10 @@
-@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import "bootstrap-icons/font/bootstrap-icons.css";
 :root {
   --bs-dark: rgb(33, 37, 41);
+  --padding-side: 5em;
+  --main-bg: #f3f3f3;
+  --container-bg: #fff;
+  --shadow-color: rgba(0, 0, 0, 0.4);
   font-family: "Rubik", sans-serif;
 }
 
@@ -11,28 +15,15 @@
 }
 
 body {
-  padding-left: 5em;
-  padding-right: 5em;
-  background-color: #f3f3f3;
-  background-image: url("../../public/img/i-like-food.svg");
-}
-
-.container {
-  padding-left: 1em;
-  padding-right: 1em;
-  background-color: #fff;
-  box-shadow: 0 0.5rem 11rem rgba(0, 0, 0, 0.4);
-  max-width: 1920px;
-  margin-left: auto;
-  margin-right: auto;
+  padding: 0 var(--padding-side);
+  background: var(--main-bg) url("../../../public/img/i-like-food.svg");
 }
 
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 0.5rem;
-  padding-bottom: 1rem;
+  padding: 0.5rem 0 1rem;
   margin-bottom: 1.5rem;
   border-bottom: 1px solid #dee2e6;
 }
@@ -40,25 +31,24 @@ body {
 .logo-container {
   flex: 0 1 auto;
 }
-
 .logo-container img {
   width: 229px;
   height: 68px;
 }
 
 .nav-container {
-  list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
   justify-content: center;
   flex: 1 1 auto;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .nav-link {
   padding: 0 1rem;
-  text-decoration: none;
   color: var(--bs-dark);
+  text-decoration: none;
 }
 .nav-link:hover {
   color: #000;
@@ -83,24 +73,19 @@ body {
 }
 
 .footer {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding: 3rem 0;
 }
 
 .hero-row {
   display: flex;
-  margin-left: 1em;
-  margin-right: 1em;
   flex-direction: row-reverse;
   align-items: center;
-  row-gap: 3rem;
-  column-gap: 3rem;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  margin-bottom: 1.5rem;
+  gap: 3rem;
+  padding: 1.5rem 0;
+  margin: 0 1em 1.5rem;
 }
 .hero-row h1 {
-  font-size: calc(.5rem + 2vw);
+  font-size: calc(0.5rem + 2vw);
   font-weight: 700;
   margin-bottom: 1rem;
 }
@@ -128,60 +113,56 @@ body {
   gap: 0.5rem;
 }
 
-.btn-latest {
+.btn-latest, .btn-random {
   display: inline-block;
   font-weight: 400;
-  color: #fff;
   text-align: center;
   vertical-align: middle;
   user-select: none;
-  background-color: #212529;
-  border: 1px solid transparent;
   font-size: 1.25rem;
   border-radius: 0.375rem;
   padding: 0.5rem 1.5rem;
   margin-right: 0.5rem;
   text-decoration: none;
 }
+
+.btn-latest {
+  color: #fff;
+  background-color: #212529;
+  border: 1px solid transparent;
+}
 .btn-latest:hover {
-  background-color: #1e2125;
+  background-color: #0a0c0d;
 }
 
 .btn-random {
-  display: inline-block;
-  font-weight: 400;
   color: #6c757d;
-  text-align: center;
-  vertical-align: middle;
-  user-select: none;
   background-color: transparent;
   border: 1px solid #6c757d;
-  font-size: 1.25rem;
-  border-radius: 0.375rem;
-  padding: 0.5rem 1.5rem;
-  margin-right: 0.5rem;
-  text-decoration: none;
 }
 .btn-random:hover {
   color: #fff;
   background-color: #6c757d;
-  border-color: #6c757d;
 }
 
-.categories {
+.categories, .categories-explore {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
   gap: 1rem;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding: 1.5rem 0;
+}
+.categories.categories, .categories-explore.categories {
+  grid-template-columns: repeat(6, 1fr);
+}
+.categories.categories-explore, .categories-explore.categories-explore {
+  grid-template-columns: repeat(5, 1fr);
+  margin-bottom: 1.5rem;
 }
 
 .category-link {
   display: block;
-  flex: 1;
   text-align: center;
   text-decoration: none;
-  transition: 250ms all;
+  transition: transform 250ms;
 }
 .category-link:hover {
   transform: scale(1.1);
@@ -209,16 +190,8 @@ body {
   padding-top: 0.25rem;
 }
 
-.categories-explore {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
 .latest {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding: 1.5rem 0;
 }
 
 .latest-cards {
@@ -229,8 +202,8 @@ body {
 
 .latest-title {
   display: flex;
-  margin-bottom: 0.5rem;
   align-items: center;
+  margin-bottom: 0.5rem;
 }
 .latest-title a {
   margin-left: auto;
@@ -242,28 +215,24 @@ body {
 }
 
 .recipe-card-link {
-  flex: 1;
+  flex-grow: 1;
   text-align: center;
 }
 
 .recipe-container {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -0.5rem;
-  margin-right: -0.5rem;
+  margin: 0 -0.5rem;
 }
 .recipe-container .recipe-section {
   width: 100%;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding: 0 0.5rem;
 }
-@media (min-width: 768px) {
-  .recipe-container .recipe-image-md {
-    width: 33.3333%;
-  }
-  .recipe-container .recipe-details {
-    width: 66.6667%;
-  }
+.recipe-container .recipe-image-md {
+  width: 33.3333%;
+}
+.recipe-container .recipe-details {
+  width: 66.6667%;
 }
 
 .recipe-image {
@@ -287,8 +256,7 @@ body {
 .subheading {
   font-size: 1.25rem;
   font-weight: 600;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin: 1.5rem 0 0.5rem;
 }
 
 .recipe-ingredients {
@@ -325,28 +293,24 @@ body {
 }
 
 .submit {
-  padding-bottom: 1.5rem;
-  padding-top: 1.5rem;
+  padding: 1.5rem 0;
   text-align: center;
 }
 .submit img {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 1.5rem;
+  margin: 0 auto 1.5rem;
   max-width: 100%;
   height: auto;
 }
 .submit h1 {
-  font-size: calc(.5rem + 2vw);
+  font-size: calc(0.5rem + 2vw);
   font-weight: 700;
   line-height: 1.2;
 }
 
 .submit-col {
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 .submit-col p {
   font-size: 0.85rem;
@@ -355,25 +319,25 @@ body {
   margin-bottom: 1.5rem;
 }
 
-.submit-btn {
+.submit-btn, .form-container, .recipe-row {
   display: flex;
   gap: 0.5rem;
   justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 -0.5rem;
 }
+
 .submit-btn button {
   display: inline-block;
   font-weight: 400;
   color: #fff;
-  text-align: center;
-  vertical-align: middle;
-  user-select: none;
   background-color: #343a40;
   border: 1px solid transparent;
   padding: 0.75rem 1.25rem;
   font-size: 1.25rem;
-  line-height: 1.5;
   border-radius: 0.375rem;
   text-decoration: none;
+  line-height: 1.5;
 }
 .submit-btn button:hover {
   background-color: #23272b;
@@ -381,8 +345,7 @@ body {
 
 .title-container {
   padding: 3rem 1.5rem;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
+  margin: 3rem 0;
   text-align: center;
 }
 .title-container .title {
@@ -392,8 +355,7 @@ body {
 }
 .title-container div {
   width: 50%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 .title-container div p {
   font-size: 1.25rem;
@@ -401,101 +363,63 @@ body {
   line-height: 1.5;
 }
 
-.form-container {
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: -0.5rem;
-  margin-right: -0.5rem;
-  justify-content: center;
-}
-
 .btn-ingredient {
   display: inline-block;
   font-weight: 400;
   color: #0d6efd;
   text-align: center;
-  vertical-align: middle;
   background-color: transparent;
   border: 1px solid #0d6efd;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
-  line-height: 1.5;
   border-radius: 0.375rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  transition: 0.15s ease-in-out;
 }
 .btn-ingredient:hover {
-  color: white;
+  color: #fff;
   background-color: #0d6efd;
   border-color: #0d6efd;
 }
 
-.form-control {
-  display: block;
+.form-control, .btn-submit {
+  display: inline-block;
   width: 100%;
   padding: 0.375rem 1.75rem 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
   border-radius: 0.375rem;
-  appearance: none;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: 0.15s ease-in-out;
 }
-.form-control:focus {
+.form-control:focus, .btn-submit:focus {
   border-color: #80bdff;
-  outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  outline: 0;
 }
 
 .btn-submit {
-  display: inline-block;
-  font-weight: 400;
-  color: white;
-  text-align: center;
-  vertical-align: middle;
-  user-select: none;
+  color: #fff;
   background-color: #0d6efd;
   border: 1px solid #0d6efd;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  border-radius: 0.375rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
 .btn-submit:hover {
-  color: white;
   background-color: #0056b3;
   border-color: #0056b3;
 }
 .btn-submit:focus, .btn-submit:active {
-  color: white;
   background-color: #004085;
   border-color: #004085;
   box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.5);
 }
 
-.recipe-row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: -1rem;
-  margin-right: -1rem;
-  row-gap: 1rem;
-  column-gap: 1rem;
-}
-
 .recipe-col-8 {
   width: 66.6667%;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding: 0 0.5rem;
   box-sizing: border-box;
 }
 
 .recipe-col-12 {
   width: 100%;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding: 0 0.5rem;
   box-sizing: border-box;
 }
 
@@ -526,15 +450,11 @@ input[type=file] {
   margin-top: 5px;
 }
 
-.image-preview-container {
-  margin-top: 10px;
-}
-
+.image-preview-container,
 .image-preview {
+  margin-top: 10px;
   max-width: 100%;
   height: auto;
-  display: block;
-  margin-bottom: 10px;
 }
 
 .custom-alert {
@@ -566,6 +486,46 @@ input[type=file] {
   gap: 1rem;
 }
 
+.container {
+  padding: 0 1em;
+  background-color: var(--container-bg);
+  box-shadow: 0 0.5rem 11rem var(--shadow-color);
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.logo-container img {
+  width: 229px;
+  height: 68px;
+}
+
+.nav-container {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-link {
+  padding: 0 1rem;
+  color: var(--bs-dark);
+  text-decoration: none;
+}
+.nav-link:hover {
+  color: #000;
+}
+
 .breadcrumb {
   display: flex;
   list-style: none;
@@ -585,7 +545,6 @@ input[type=file] {
 
 .breadcrumb-item:last-child::after {
   content: "";
-  /* Removes the slash after the last item */
 }
 
 .breadcrumb-item a {

@@ -1,5 +1,6 @@
 ﻿import {useEffect, useState} from "react";
 import RecipeCard from "../components/recipeCard.jsx";
+import Breadcrumb from "../components/breadcrumb.jsx";
 
 const ExploreLatest = () => {
     const [recipes, setRecipes] = useState([]);
@@ -29,6 +30,7 @@ const ExploreLatest = () => {
     return (
         <div>
             <h1 className="search-title">Explore Latest Recipes</h1>
+            <Breadcrumb currentPage="Latest Recipes"/>
             <div className="search-results">
                 {errorMessage ? (
                     <p>{errorMessage}</p>

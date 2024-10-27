@@ -1,9 +1,9 @@
-﻿.recipe-card{
+﻿.recipe-card {
   display: flex;
   flex-direction: column;
 }
 
-.recipe-card-link{
-  flex: 1;
+.recipe-card-link {
+  flex-grow: 1;
   text-align: center;
 }

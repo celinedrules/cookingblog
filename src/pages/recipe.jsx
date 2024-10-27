@@ -1,5 +1,6 @@
-﻿import {Link, useParams} from "react-router-dom";
+﻿import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
+import Breadcrumb from "../components/breadcrumb.jsx";
 
 const Recipe = () => {
     const {id} = useParams();
@@ -17,12 +18,7 @@ const Recipe = () => {
 
     return (
         <div>
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><Link to="/">Home</Link></li>
-                    <li className="breadcrumb-item active" aria-current="page">{recipe.name}</li>
-                </ol>
-            </nav>
+            <Breadcrumb currentPage={recipe.name}/>
             <div className="recipe-container">
                 <div className="recipe-section recipe-image-md">
                     <img

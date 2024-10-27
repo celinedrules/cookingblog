@@ -1,6 +1,6 @@
-﻿import {Link} from "react-router-dom";
-import {useEffect, useState} from "react";
+﻿import {useEffect, useState} from "react";
 import Category from "../components/category.jsx";
+import Breadcrumb from "../components/breadcrumb.jsx";
 
 const ExploreCategories = () => {
     const [data, setData] = useState({title: '', message: '', categories: []});
@@ -15,12 +15,7 @@ const ExploreCategories = () => {
     return (
         <div>
             <h1>{data.title}</h1>
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><Link to="/">Home</Link></li>
-                    <li className="breadcrumb-item active" aria-current="page">Categories</li>
-                </ol>
-            </nav>
+            <Breadcrumb currentPage="Categories"/>
 
             <div className="categories-explore">
                 {data.categories.map((category) => (

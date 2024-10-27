@@ -1,4 +1,5 @@
 ﻿import {useState} from "react";
+import Breadcrumb from "../components/breadcrumb.jsx";
 
 const SubmitPage = () => {
     const [selectedCategory, setSelectedCategory] = useState("");
@@ -73,6 +74,7 @@ const SubmitPage = () => {
 
     return (
         <div>
+            <Breadcrumb currentPage="Submit Recipe"/>
             <div className="title-container">
                 <h1 className="title">Submit Recipe</h1>
                 <div>

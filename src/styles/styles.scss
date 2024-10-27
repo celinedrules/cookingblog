@@ -1,34 +1,14 @@
-﻿:root {
-  --bs-dark: rgb(33, 37, 41);
-  font-family: "Rubik", sans-serif;
-}
+﻿// External dependencies
+@import "bootstrap-icons/font/bootstrap-icons.css";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+// Global settings and base styles
+@import "partials/base";
 
-body {
-  padding-left: 5em;
-  padding-right: 5em;
-  background-color: rgb(243, 243, 243);
-  background-image: url("../../public/img/i-like-food.svg");
-}
-
-.container {
-  padding-left: 1em;
-  padding-right: 1em;
-  background-color: #fff;
-  box-shadow: 0 0.5rem 11rem rgba(0, 0, 0, 0.4);
-  max-width: 1920px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@import 'bootstrap-icons/font/bootstrap-icons.css';
+// Layout and primary sections
 @import "partials/header-section";
 @import "partials/footer-section";
+
+// Page-specific sections
 @import "partials/hero-section";
 @import "partials/catgegory-section";
 @import "partials/latest-section";
@@ -36,6 +16,47 @@ body {
 @import "partials/recipe-section";
 @import "partials/submit-section";
 @import "partials/search-section";
+
+.container {
+  padding: 0 1em;
+  background-color: var(--container-bg);
+  box-shadow: 0 0.5rem 11rem var(--shadow-color);
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.logo-container img {
+  width: 229px;
+  height: 68px;
+}
+
+.nav-container {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-link {
+  padding: 0 1rem;
+  color: var(--bs-dark);
+  text-decoration: none;
+
+  &:hover {
+    color: #000;
+  }
+}
 
 .breadcrumb {
   display: flex;
@@ -55,7 +76,7 @@ body {
 }
 
 .breadcrumb-item:last-child::after {
-  content: "";  /* Removes the slash after the last item */
+  content: "";
 }
 
 .breadcrumb-item a {

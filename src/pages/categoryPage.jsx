@@ -1,6 +1,7 @@
-﻿import {Link, useParams} from "react-router-dom";
+﻿import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import RecipeList from "../components/recipeList.jsx";
+import Breadcrumb from "../components/breadcrumb.jsx";
 
 const CategoryPage = () => {
     const {categoryName} = useParams();
@@ -16,13 +17,7 @@ const CategoryPage = () => {
     return (
         <div>
             <h1>{categoryName} Recipes</h1>
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><Link to="/">Home</Link></li>
-                    <li className="breadcrumb-item"><Link to="/categories">Categories</Link></li>
-                    <li className="breadcrumb-item active" aria-current="page">{categoryName} Recipes</li>
-                </ol>
-            </nav>
+            <Breadcrumb currentPage={categoryName} Recipes/>
             <RecipeList recipes={recipes} categoryName={categoryName} />
         </div>
     );
